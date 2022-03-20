@@ -6,20 +6,9 @@ namespace Lokalise.CLI;
 public class Cli2Lokalise : ILokalise
 {
     private string? processPath;
-    public Cli2Lokalise()
+    public Cli2Lokalise(string lokalisePath = null)
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-        {
-            processPath = Path.Combine(Environment.CurrentDirectory, "lokalise2_linux");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            processPath = Path.Combine(Environment.CurrentDirectory, "lokalise2_darwin");
-        }
-        else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            processPath = Path.Combine(Environment.CurrentDirectory, "lokalise2.exe");
-        }
+        processPath = lokalisePath ?? "lokalise2";
     }
     
     public async Task Download(string token, string projectId, DownloadFormat format)
@@ -29,7 +18,6 @@ public class Cli2Lokalise : ILokalise
         arg.Append($"--project-id {projectId} ");
         arg.Append("file download ");
         arg.Append($"--format {format.ToString().ToLower()} ");
-        arg.Append($"--bundle-structure 'locale/%LANG_ISO%.{format.ToString().ToLower()}'");
         arg.Append("--original-filenames=false ");
         arg.Append("--export-empty-as=base ");
         arg.Append("--unzip-to . ");

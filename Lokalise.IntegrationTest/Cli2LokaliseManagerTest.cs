@@ -27,7 +27,7 @@ public class Cli2LokaliseManagerTest
     }
 
     [Test]
-    public async Task TestDownload()
+    public async Task TestDownloadWithLokaliseInstalledOnDevice()
     {
         var manager = new Cli2Lokalise();
         var token = _configuration["Token"];
@@ -36,4 +36,16 @@ public class Cli2LokaliseManagerTest
         await manager.Download(token, projectId, DownloadFormat.Json);
         Assert.True(Directory.Exists(Path.Combine(Environment.CurrentDirectory, "locale")));
     }
+    
+    [Test]
+    public async Task TestDownloadWithLokaliseFromPath()
+    {
+        var manager = new Cli2Lokalise(_configuration["LokalisePath"]);
+        var token = _configuration["Token"];
+        var projectId = _configuration["ProjectId"];
+        
+        await manager.Download(token, projectId, DownloadFormat.Json);
+        Assert.True(Directory.Exists(Path.Combine(Environment.CurrentDirectory, "locale")));
+    }
+
 }
