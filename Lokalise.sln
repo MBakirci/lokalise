@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokalise", "Lokalise\Lokalise.csproj", "{DF906338-7847-4040-8EA1-62CF4E144C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lokalise.IntegrationTest", "Lokalise.IntegrationTest\Lokalise.IntegrationTest.csproj", "{0F1BE95F-36CA-47DA-869A-B8F8038BE036}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF906338-7847-4040-8EA1-62CF4E144C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF906338-7847-4040-8EA1-62CF4E144C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF906338-7847-4040-8EA1-62CF4E144C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF906338-7847-4040-8EA1-62CF4E144C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F1BE95F-36CA-47DA-869A-B8F8038BE036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F1BE95F-36CA-47DA-869A-B8F8038BE036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F1BE95F-36CA-47DA-869A-B8F8038BE036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F1BE95F-36CA-47DA-869A-B8F8038BE036}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
