@@ -13,21 +13,29 @@ public class HttpLokalise : ILokalise
     private string ZipFilePath => Path.Combine(Environment.CurrentDirectory, FileName);
     private string DestinationPath => Path.Combine(Environment.CurrentDirectory, "locale");
 
+    public HttpLokalise()
+    {
+        Cleanup();
+    }
+
+    private void Cleanup()
+    {
+        if (File.Exists(ZipFilePath))
+        {
+            File.Delete(ZipFilePath);
+        }
+
+        if (Directory.Exists(DestinationPath))
+        {
+            Directory.Delete(DestinationPath, true);
+        }
+    }
+
     public async Task Download(string token, string projectId, DownloadFormat format)
     {
         var bundleInfo = await GetBundle(token, projectId, DownloadFormat.Json);
         if (bundleInfo == null) throw new MissingBundleException();
         await DownloadBundleZip(bundleInfo.BundleUrl);
-        UnZipBundle();
-    }
-
-    private void UnZipBundle()
-    {
-        if (Directory.Exists(DestinationPath))
-        {
-            Directory.Delete(DestinationPath, true);
-        }
-
         ZipFile.ExtractToDirectory(ZipFilePath, DestinationPath);
     }
 
