@@ -4,6 +4,14 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.1</PackageVersion>
+        <Authors>Mehmet Bakirci</Authors>
+        <Description>A C# wrapper for Lokalise CLI2 and Rest Api</Description>
+        <Copyright>MIT</Copyright>
+        <PackageProjectUrl>https://github.com/MBakirci/lokalise/</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/MBakirci/lokalise/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/MBakirci/lokalise</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
