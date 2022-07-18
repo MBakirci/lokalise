@@ -10,11 +10,19 @@ public class HttpLokalise : ILokalise
 {
     private readonly HttpClient _httpClient = new();
     private const string FileName = "locale.zip";
-    private string ZipFilePath => Path.Combine(Environment.CurrentDirectory, FileName);
-    private string DestinationPath => Path.Combine(Environment.CurrentDirectory, "locale");
+    private string DownloadPath;
+    private string ZipFilePath => Path.Combine(DownloadPath, FileName);
+    private string DestinationPath => Path.Combine(DownloadPath, "locale");
 
     public HttpLokalise()
     {
+        DownloadPath = Environment.CurrentDirectory;
+        Cleanup();
+    }
+
+    public HttpLokalise(string currentDirectory)
+    {
+        DownloadPath = !string.IsNullOrEmpty(currentDirectory) ? currentDirectory : Environment.CurrentDirectory;
         Cleanup();
     }
 
