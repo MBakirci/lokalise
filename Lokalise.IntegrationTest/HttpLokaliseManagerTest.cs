@@ -46,4 +46,26 @@ public class HttpLokaliseManagerTest
         await manager.Download(token, projectId, DownloadFormat.Json);
         Assert.True(Directory.Exists(Path.Combine(Environment.CurrentDirectory, "locale")));
     }
+
+    [Test]
+    public async Task TestDownloadGivenDownloadPath()
+    {
+        var manager = new HttpLokalise(_configuration["DownloadPath"]);
+        var token = _configuration["Token"];
+        var projectId = _configuration["ProjectId"];
+        
+        await manager.Download(token, projectId, DownloadFormat.Json);
+        Assert.True(Directory.Exists(Path.Combine(_configuration["DownloadPath"], "locale")));
+    }
+
+    [Test]
+    public async Task TestDownloadGivenEmptyDownloadPath()
+    {
+        var manager = new HttpLokalise("");
+        var token = _configuration["Token"];
+        var projectId = _configuration["ProjectId"];
+        
+        await manager.Download(token, projectId, DownloadFormat.Json);
+        Assert.True(Directory.Exists(Path.Combine(Environment.CurrentDirectory, "locale")));
+    }
 }
