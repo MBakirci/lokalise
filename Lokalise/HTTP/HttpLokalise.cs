@@ -52,7 +52,7 @@ public class HttpLokalise : ILokalise
         using var request = new HttpRequestMessage(new HttpMethod("POST"), $"https://api.lokalise.com/api2/projects/{projectId}/files/download");
         request.Headers.TryAddWithoutValidation("x-api-token", token); 
 
-        var requestBody = new { format = "json"};
+        var requestBody = new { format = "json", export_empty_as = "base" };
         request.Content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
         request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json"); 
 
